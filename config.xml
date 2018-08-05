@@ -1,0 +1,27 @@
+<settings>
+	<filename>epg.xml</filename>
+
+	<!-- choose on if you want to cache detail pages (recommended), off otherwise -->
+	<caching>on</caching>
+
+	<!-- timespan in hours;
+	  shows will be included in the epg if they start less than xx hours in the future --> 
+	<timespan_index>48</timespan_index>
+	<!-- timespan in hours;
+	  the detail pages of shows which start less than xx hours in the future will be crawled (otherwise only the information given on the respective index page is used) --> 
+	<timespan_full>24</timespan_full>
+	<!-- timespan in hours;
+	  only relevant if caching is enabled;
+	  the detail pages of shows which start less than xx hours in the future will be loaded from the internet instead of the cache -->
+	<timespan_force>6</timespan_force>
+
+	<!-- replace these entries by actual channels which can be found in the xml files of the sites you pick;
+	  the attribute xmltv_id specifies the ID of the channel in the XMLTV file, set it according to your needs (if you use the XMLTV file together with an m3u file, this value should equal to the tvg-id in the m3u);
+	  the channel value specifies the "display-name" of the channel in the XMLTV file, set it according to your needs;
+	  the settings "caching", "timespan_index", "timespan_full", and "timespan_force" which were set globally above can be overwritten locally for each channel by setting the respective attribute -->
+	<channel site="xy.example1" site_id="1" xmltv_id="abc" caching="off" timespan_index="96">ABC Channel</channel>
+	<channel site="xy.example1" site_id="2" xmltv_id="def">DEF Channel</channel>
+	<channel site="xy.example2" site_id="123" xmltv_id="123">123</channel>
+	<channel site="xy.example2" site_id="456" xmltv_id="456">456</channel>
+
+</settings>
