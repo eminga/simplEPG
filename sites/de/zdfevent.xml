@@ -1,0 +1,5 @@
+<channels>
+	<channel site="de.zdfevent" site_id="1" xmltv_id="ecs1.de">ECS Livestream 1</channel>
+	<channel site="de.zdfevent" site_id="2" xmltv_id="ecs2.de">ECS Livestream 2</channel>
+	<channel site="de.zdfevent" site_id="3" xmltv_id="ecs3.de">ECS Livestream 3</channel>
+</channels>

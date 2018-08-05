@@ -1,0 +1,20 @@
+<channels>
+	<channel site="de.ard" site_id="28106" xmltv_id="daserste.de">Das Erste</channel>
+	<channel site="de.ard" site_id="28007" xmltv_id="3sat.de">3sat</channel>
+	<channel site="de.ard" site_id="28724" xmltv_id="arte.de">arte</channel>
+	<channel site="de.ard" site_id="28107" xmltv_id="brfernsehen.de">BR Fernsehen</channel>
+	<channel site="de.ard" site_id="28108" xmltv_id="hr-fernsehen.de">hr-fernsehen</channel>
+	<channel site="de.ard" site_id="28229" xmltv_id="mdrfernsehen.de">MDR FERNSEHEN</channel>
+	<channel site="de.ard" site_id="28226" xmltv_id="ndrfernsehen.de">NDR Fernsehen</channel>
+	<channel site="de.ard" site_id="28385" xmltv_id="radiobrementv.de">Radio Bremen TV</channel>
+	<channel site="de.ard" site_id="28205" xmltv_id="rbbfernsehen.de">rbb Fernsehen</channel>
+	<channel site="de.ard" site_id="28486" xmltv_id="srfernsehen.de">SR Fernsehen</channel>
+	<channel site="de.ard" site_id="28113" xmltv_id="swrfernsehenbw.de">SWR Fernsehen BW</channel>
+	<channel site="de.ard" site_id="28231" xmltv_id="swrfernsehenrp.de">SWR Fernsehen RP</channel>
+	<channel site="de.ard" site_id="28111" xmltv_id="wdrfernsehen.de">WDR Fernsehen</channel>
+	<channel site="de.ard" site_id="28487" xmltv_id="ard-alpha.de">ARD-alpha</channel>
+	<channel site="de.ard" site_id="28721" xmltv_id="tagesschau24.de">tagesschau24</channel>
+	<channel site="de.ard" site_id="28722" xmltv_id="one.de">ONE</channel>
+	<channel site="de.ard" site_id="28008" xmltv_id="kika.de">KiKA</channel>
+	<channel site="de.ard" site_id="28725" xmltv_id="phoenix.de">PHOENIX</channel>
+</channels>

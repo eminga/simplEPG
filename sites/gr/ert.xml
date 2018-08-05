@@ -1,0 +1,6 @@
+<channels>
+	<channel site="gr.ert" site_id="9" xmltv_id="ert1.gr">ERT1</channel>
+	<channel site="gr.ert" site_id="49" xmltv_id="ert2.gr">ERT2</channel>
+	<channel site="gr.ert" site_id="10" xmltv_id="ert3.gr">ERT3</channel>
+	<channel site="gr.ert" site_id="11" xmltv_id="ertworld.gr">ERT World</channel>
+</channels>

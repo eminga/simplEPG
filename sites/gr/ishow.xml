@@ -1,0 +1,32 @@
+<channels>
+	<channel site="gr.ishow" site_id="1" xmltv_id="mega.gr">Mega Channel</channel>
+	<channel site="gr.ishow" site_id="2" xmltv_id="ant1.gr">ANT1</channel>
+	<channel site="gr.ishow" site_id="3" xmltv_id="alphatv.gr">Alpha TV</channel>
+	<channel site="gr.ishow" site_id="4" xmltv_id="star.gr">Star</channel>
+	<channel site="gr.ishow" site_id="9" xmltv_id="skai.gr">ΣΚΑΪ</channel>
+	<channel site="gr.ishow" site_id="10" xmltv_id="vouli.gr">Vouli Tileorasi</channel>
+	<channel site="gr.ishow" site_id="12" xmltv_id="madtv.gr">MAD TV</channel>
+	<channel site="gr.ishow" site_id="17" xmltv_id="animalplanet.gr">Animal Planet</channel>
+	<channel site="gr.ishow" site_id="18" xmltv_id="boomerang.gr">Boomerang</channel>
+	<channel site="gr.ishow" site_id="20" xmltv_id="discovery.gr">Discovery</channel>
+	<channel site="gr.ishow" site_id="21" xmltv_id="entertainment.gr">E!</channel>
+	<channel site="gr.ishow" site_id="25" xmltv_id="history.gr">History</channel>
+	<channel site="gr.ishow" site_id="29" xmltv_id="mtv.gr">MTV</channel>
+	<channel site="gr.ishow" site_id="30" xmltv_id="nationalgeographic.gr">National Geographic Channel</channel>
+	<channel site="gr.ishow" site_id="31" xmltv_id="novacinema1.gr">NovaCinema 1</channel>
+	<channel site="gr.ishow" site_id="32" xmltv_id="novacinema2.gr">NovaCinema 2</channel>
+	<channel site="gr.ishow" site_id="33" xmltv_id="novacinema3.gr">NovaCinema 3</channel>
+	<channel site="gr.ishow" site_id="34" xmltv_id="novasports1.gr">Nova Sports 1</channel>
+	<channel site="gr.ishow" site_id="37" xmltv_id="novasports2.gr">Nova Sports 2</channel>
+	<channel site="gr.ishow" site_id="38" xmltv_id="novasports3.gr">Nova Sports 3</channel>
+	<channel site="gr.ishow" site_id="39" xmltv_id="novasports4.gr">Nova Sports 4</channel>
+	<channel site="gr.ishow" site_id="41" xmltv_id="novasports6.gr">Nova Sports 6</channel>
+	<channel site="gr.ishow" site_id="42" xmltv_id="novasports7.gr">Nova Sports 7</channel>
+	<channel site="gr.ishow" site_id="43" xmltv_id="maktv.gr">Makedonia TV</channel>
+	<!-- incomplete... -->
+	<channel site="gr.ishow" site_id="86" xmltv_id="art.gr">art</channel>
+	<channel site="gr.ishow" site_id="88" xmltv_id="4e.gr">4Ε</channel>
+	<channel site="gr.ishow" site_id="122" xmltv_id="epsilon.gr">Epsilon TV</channel>
+	<channel site="gr.ishow" site_id="123" xmltv_id="ert1.gr">ERT1</channel>
+	<channel site="gr.ishow" site_id="124" xmltv_id="ert2.gr">ERT2</channel>	
+</channels>

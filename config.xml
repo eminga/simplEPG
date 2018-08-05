@@ -16,7 +16,7 @@
 	<timespan_force>6</timespan_force>
 
 	<!-- replace these entries by actual channels which can be found in the xml files of the sites you pick;
-	  the attribute xmltv_id specifies the ID of the channel in the XMLTV file, set it according to your needs (if you use the XMLTV file together with an m3u file, this value should equal to the tvg-id in the m3u);
+	  the attribute xmltv_id specifies the ID of the channel in the XMLTV file, set it according to your needs (if you use the XMLTV file together with an m3u file, this value should be equal to the tvg-id in the m3u);
 	  the channel value specifies the "display-name" of the channel in the XMLTV file, set it according to your needs;
 	  the settings "caching", "timespan_index", "timespan_full", and "timespan_force" which were set globally above can be overwritten locally for each channel by setting the respective attribute -->
 	<channel site="xy.example1" site_id="1" xmltv_id="abc" caching="off" timespan_index="96">ABC Channel</channel>

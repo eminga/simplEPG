@@ -1,0 +1,9 @@
+<channels>
+	<channel site="de.zdf" site_id="ZDF" xmltv_id="zdf.de">ZDF</channel>
+	<channel site="de.zdf" site_id="ZDFinfo" xmltv_id="zdfinfo.de">ZDFinfo</channel>
+	<channel site="de.zdf" site_id="ZDFneo" xmltv_id="zdfneo.de">ZDFneo</channel>
+	<channel site="de.zdf" site_id="3sat" xmltv_id="3sat.de">3sat</channel>
+	<channel site="de.zdf" site_id="KI.KA" xmltv_id="kika.de">KI.KA</channel>
+	<channel site="de.zdf" site_id="PHOENIX" xmltv_id="phoenix.de">PHOENIX</channel>
+	<channel site="de.zdf" site_id="arte" xmltv_id="arte.de">arte</channel>
+</channels>
