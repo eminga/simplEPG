@@ -15,7 +15,7 @@ def grab(channel, timespan):
 		a = -1
 	for i in range(a, 14):
 		date = now + datetime.timedelta(days=i)
-		text = helper.download("http://program.ert.gr/Ert1/index.asp?id=" + channel + "&pdate=" + date.strftime("%d/%m/%Y"), encoding=charset, ignore_robots=True)
+		text = helper.download("http://program.ert.gr/Ert1/index.asp?id=" + channel + "&pdate=" + date.strftime("%d/%m/%Y"), encoding=charset)
 		if text is None:
 			continue
 
@@ -59,7 +59,7 @@ def grab(channel, timespan):
 
 def grabdetails(url):
 	charset = "windows-1253"
-	text = helper.download(url, encoding=charset, ignore_robots=True)
+	text = helper.download(url, encoding=charset)
 	if text is None:
 		return None
 	show = {}

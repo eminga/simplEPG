@@ -3,4 +3,6 @@
 	<channel site="gr.ert" site_id="49" xmltv_id="ert2.gr">ERT2</channel>
 	<channel site="gr.ert" site_id="10" xmltv_id="ert3.gr">ERT3</channel>
 	<channel site="gr.ert" site_id="11" xmltv_id="ertworld.gr">ERT World</channel>
+	<channel site="gr.ert" site_id="24" xmltv_id="erthd.gr">ERT HD</channel>
+	<channel site="gr.ert" site_id="8" xmltv_id="vouli.gr">Vouli Tileorasi</channel>
 </channels>
