@@ -163,8 +163,8 @@
 	<channel site="uk.freesat" site_id="11004" xmltv_id="tjcchoice.uk">TJC Choice</channel>
 	<channel site="uk.freesat" site_id="11005" xmltv_id="tjc.uk">TJC</channel>
 	<channel site="uk.freesat" site_id="10004" xmltv_id="idealworld.uk">Ideal World</channel>
-	<channel site="uk.freesat" site_id="4008" xmltv_id="createcraft.uk">Create & Craft</channel>
-	<channel site="uk.freesat" site_id="19008" xmltv_id="rocksco1.uk">Rocks & Co1</channel>
+	<channel site="uk.freesat" site_id="4008" xmltv_id="createcraft.uk">Create &amp; Craft</channel>
+	<channel site="uk.freesat" site_id="19008" xmltv_id="rocksco1.uk">Rocks &amp; Co1</channel>
 	<channel site="uk.freesat" site_id="9006" xmltv_id="hochanda.uk">Hochanda</channel>
 	<channel site="uk.freesat" site_id="918" xmltv_id="bbcrb1.uk">BBC RB 1</channel>
 	<channel site="uk.freesat" site_id="9007" xmltv_id="rakutentv.uk">Rakuten TV</channel>
