@@ -9,6 +9,6 @@ Add the channels you want to crawl (see sites/xx/yyy.xml) to the `config.xml` an
 ## Requirements
 Python 2.7 or 3.x
 
-Non-standard modules: pytz, six
+Non-standard modules: pytz, six, progress.bar (optional)
 
 Modules in the standard library: datetime, importlib, json, re, socket, ssl, sys, time, xml.etree.ElementTree

@@ -186,6 +186,27 @@ def process_show(programme, show):
 	if "review" in show:
 		add_review(programme, show["review"])
 
+def parse_xmltv_date(date):
+	x = date.split()
+	date_format = ""
+	if len(x[0]) >= 4:
+		date_format += "%Y"
+	if len(x[0]) >= 6:
+		date_format += "%m"
+	if len(x[0]) >= 8:
+		date_format += "%d"
+	if len(x[0]) >= 10:
+		date_format += "%H"
+	if len(x[0]) >= 12:
+		date_format += "%M"
+	if len(x[0]) == 14:
+		date_format += "%S"
+	if len(x) == 2:
+		if x[1][0] == "+" or x[1][0] == "-":
+			date_format += " %z"
+		else:
+			date_format += " %Z"
+	return datetime.datetime.strptime(date, date_format)
 
 # unfinished
 def update_channellist(sitename):
@@ -291,10 +312,19 @@ def create_epg(config):
 						pass
 
 					def finish(self):
-						print("%s shows added." % self.index)
+						if self.index > 0:
+							print("%s shows added." % self.index)
 
 
 			bar = Bar("Processing", max=len(shows))
+
+			for i in range(len(shows)):
+				if type(shows[i]) == ET.Element:
+					starttime = parse_xmltv_date(shows[i].get("start"))
+					stoptime = shows[i].get("stop")
+					if type(stoptime) != None:
+						stoptime = parse_xmltv_date(stoptime)
+						shows[i] = {"xml": shows[i], "start": starttime, "stop": stoptime}
 
 
 			shows.sort(key = lambda r: r["start"])
@@ -311,6 +341,7 @@ def create_epg(config):
 				# don't store shows that are already finished
 				if stoptime < now:
 					bar.max -= 1
+					bar.max = max(bar.max, 1)
 					continue
 
 				starttime = show["start"]
@@ -318,37 +349,45 @@ def create_epg(config):
 				if (starttime - now).total_seconds() / 3600 > timespan:
 					break
 
-				url = show.pop("details-url", None)
-				if url is not None and len(url) > 0:
-					if timespan_full > -1 and (starttime - now).total_seconds() / 3600 <= timespan_full:
-						if caching and (starttime - now).total_seconds() / 3600 > timespan_force:
-							force = False
-							try:
+				if "xml" in show:
+					show = show["xml"]
+					show.set("channel", channelid)
+					tv.append(show)
+				else:
+					url = show.pop("details-url", None)
+					if url is not None and len(url) > 0:
+						if timespan_full > -1 and (starttime - now).total_seconds() / 3600 <= timespan_full:
+							if caching and (starttime - now).total_seconds() / 3600 > timespan_force:
+								force = False
 								try:
-									details = cache_new[url]
-								except KeyError:
-									details = cache[url]
-								show.update(details)
-								cache_new[url] = details
-							except KeyError:
-								force = True
-						else:
-							force = True
-						if force:
-							try:
-								details = site.grabdetails(url)
-								show.update(details)
-								if caching:
-									# don't store times in cache
-									details.pop("start", None)
-									details.pop("stop", None)
+									try:
+										details = cache_new[url]
+									except KeyError:
+										details = cache[url]
+									show.update(details)
 									cache_new[url] = details
-							except (AttributeError, TypeError):
-								pass
-				programme = ET.SubElement(tv, "programme", start=starttime.strftime("%Y%m%d%H%M%S %z"), stop=stoptime.strftime("%Y%m%d%H%M%S %z"), channel=channelid)
-				process_show(programme, show)
+								except KeyError:
+									force = True
+							else:
+								force = True
+							if force:
+								try:
+									details = site.grabdetails(url)
+									show.update(details)
+									if caching:
+										# don't store times in cache
+										details.pop("start", None)
+										details.pop("stop", None)
+										cache_new[url] = details
+								except (AttributeError, TypeError):
+									pass
+					programme = ET.SubElement(tv, "programme", start=starttime.strftime("%Y%m%d%H%M%S %z"), stop=stoptime.strftime("%Y%m%d%H%M%S %z"), channel=channelid)
+					process_show(programme, show)
 				bar.next()
-			bar.max = bar.index
+			if bar.index > 0:
+				bar.max = bar.index
+			else:
+				print("0 shows found.")
 			bar.update()
 			bar.finish()
 		else:
