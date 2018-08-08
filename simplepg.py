@@ -201,12 +201,23 @@ def parse_xmltv_date(date):
 		date_format += "%M"
 	if len(x[0]) == 14:
 		date_format += "%S"
+	unaware = datetime.datetime.strptime(x[0], date_format)
+
 	if len(x) == 2:
 		if x[1][0] == "+" or x[1][0] == "-":
-			date_format += " %z"
+			offset = 60 * int(x[1][1:3]) + int(x[1][3:5])
+			if x[1][0] == "-":
+				offset *= -1
+			result = pytz.FixedOffset(offset).localize(unaware)
 		else:
-			date_format += " %Z"
-	return datetime.datetime.strptime(date, date_format)
+			try:
+				result = pytz.timezone(x[1]).localize(unaware)
+			except pytz.exceptions.UnknownTimeZoneError:
+				result = pytz.utc.localize(unaware)
+	else:
+		result = pytz.utc.localize(unaware)
+
+	return result
 
 # unfinished
 def update_channellist(sitename):
@@ -252,7 +263,11 @@ def create_epg(config):
 
 
 	for channel in config.findall("channel"):
-		site = importlib.import_module('sites.' + channel.get("site"))
+		try:
+			site = importlib.import_module('sites.' + channel.get("site"))
+		except:
+			print("Error: could not find module sites." + channel.get("site"))
+			continue
 		channelid = channel.get("xmltv_id")
 		print(channel.get("site") + ":" + channelid)
 
@@ -319,13 +334,14 @@ def create_epg(config):
 			bar = Bar("Processing", max=len(shows))
 
 			for i in range(len(shows)):
-				if type(shows[i]) == ET.Element:
+				if isinstance(shows[i], type(ET.Element(None))):
 					starttime = parse_xmltv_date(shows[i].get("start"))
 					stoptime = shows[i].get("stop")
 					if type(stoptime) != None:
 						stoptime = parse_xmltv_date(stoptime)
 						shows[i] = {"xml": shows[i], "start": starttime, "stop": stoptime}
-
+					else:
+						shows[i] = {"xml": shows[i], "start": starttime}
 
 			shows.sort(key = lambda r: r["start"])
 
