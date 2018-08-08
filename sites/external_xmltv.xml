@@ -1,0 +1,9 @@
+<channels>
+	<!-- This module processes external XMLTV files.
+	  Specify the location of the external xml and the channel id within the external xml as the site_id like this: "filepath:channelid".
+	  As usual, xmltv_id is the channel id in the newly generated XMLTV file.
+	  Create a seperate config entry for each channel you want to include in the new XMLTV file.
+	  Examples: -->
+	<channel site="external_xmltv" site_id="/home/user/epg.xml:channelabc.xy" xmltv_id="abc.xy">ABC Channel</channel>
+	<channel site="external_xmltv" site_id="C:\Documents and Settings\User\epg.xml:channelabc.xy" xmltv_id="abc.xy">ABC Channel</channel>
+</channels>
