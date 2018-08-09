@@ -35,14 +35,15 @@ def cut(text, begin, end):
 	return text[i:j]
 
 def cleanup(text):
-	h = HTMLParser()
-	text = h.unescape(text)
-	text = re.sub("<[\s\S]*?>", "", text)
-	text = re.sub("\t", " ", text)
-	text = re.sub("\s*$", "", text)
-	text = re.sub("^\s*", "", text)
-	text = re.sub(" {2,}", " ", text)
-	text = re.sub("\n{2,}", "\n", text)
+	if text is not None and text:
+		h = HTMLParser()
+		text = h.unescape(text)
+		text = re.sub("<[\s\S]*?>", "", text)
+		text = re.sub("\t", " ", text)
+		text = re.sub("\s*$", "", text)
+		text = re.sub("^\s*", "", text)
+		text = re.sub(" {2,}", " ", text)
+		text = re.sub("\n{2,}", "\n", text)
 	return text
 
 def check_robots(url):

@@ -4,7 +4,7 @@
 # Copyright (c) 2018 eminga
 # Licensed under MIT License
 
-import xml.etree.cElementTree as ET, datetime, pytz, importlib, json, sys
+import xml.etree.cElementTree as ET, datetime, pytz, importlib, json, six, sys
 
 # adds the given element to the xml
 def add_generic(parent, tag, element, attribute=None, allow_lists=True):
@@ -13,16 +13,16 @@ def add_generic(parent, tag, element, attribute=None, allow_lists=True):
 			add_generic(parent, tag, entry, attribute, False)
 	elif attribute and type(element) is tuple and element[1]:
 		e = ET.SubElement(parent, tag, {attribute: element[1]})
-		if type(element[0]) in {str, int, float}:
-			e.text = str(element[0])
+		if type(element[0]) in {six.text_type, int, float}:
+			e.text = six.text_type(element[0])
 	elif type(element) is tuple and type(element[1]) is dict:
 		e = ET.SubElement(parent, tag, element[1])
-		if type(element[0]) in {str, int, float}:
-			e.text = str(element[0])
+		if type(element[0]) in {six.text_type, int, float}:
+			e.text = six.text_type(element[0])
 	else:
 		e = ET.SubElement(parent, tag)
-		if type(element) in {str, int, float}:
-			e.text = str(element)
+		if type(element) in {six.text_type, int, float}:
+			e.text = six.text_type(element)
 
 def add_icon(parent, element):
 	if type(element) is list:
@@ -31,9 +31,9 @@ def add_icon(parent, element):
 	elif type(element) is tuple:
 		icon = {"src": element[0]}
 		if "width" in element[1]:
-			icon["width"] = str(element[1]["width"])
+			icon["width"] = six.text_type(element[1]["width"])
 		if "height" in element[1]:
-			icon["height"] = str(element[1]["height"])
+			icon["height"] = six.text_type(element[1]["height"])
 		add_generic(parent, "icon", (None, icon), allow_lists=False)
 	else:
 		add_generic(parent, "icon", (None, element), "src", False)
