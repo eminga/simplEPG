@@ -4,7 +4,7 @@
 # Copyright (c) 2018 eminga
 # Licensed under MIT License
 
-import xml.etree.cElementTree as ET, datetime, pytz, importlib, json, six, sys
+import xml.etree.cElementTree as ET, datetime, pytz, importlib, pickle, six, sys
 
 # adds the given element to the xml
 def add_generic(parent, tag, element, attribute=None, allow_lists=True):
@@ -245,8 +245,8 @@ def create_epg(config):
 		timespan_force_global = -1
 
 	try:
-		with open("cached_epg.json") as fp:
-			cache = json.load(fp)
+		with open("cached_epg.pkl", "rb") as fp:
+			cache = pickle.load(fp)
 	except IOError:
 		cache = {}
 
@@ -409,8 +409,8 @@ def create_epg(config):
 		else:
 			print("0 shows found.")
 	if len(cache_new) > 0:
-		with open("cached_epg.json", "w") as fp:
-			cache = json.dump(cache_new, fp) 
+		with open("cached_epg.pkl", "wb") as fp:
+			cache = pickle.dump(cache_new, fp) 
 	return tv
 
 config = ET.parse("config.xml").getroot()
