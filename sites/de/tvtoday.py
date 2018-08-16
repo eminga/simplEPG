@@ -25,6 +25,10 @@ def grab(channel, timespan):
 		show["title"] = helper.cleanup(helper.cut(section, "<span class=\"tv-tip-heading\">", "</span>"))
 		category = helper.cleanup(helper.cut(section, "<span class=\"genre\">", "</span>"))
 
+		rating = helper.cut(section, "<span class=\"listing-icon rating\" data-rating=\"", "\"><i></i></span>")
+		if rating is not None and rating:
+			show["star-rating"] = rating + " / 3"
+
 		if ", " in category:
 			category, produced = category.split(", ")
 			temp = re.search("(?P<country>\S*)\s*(?P<year>\d{4})", produced)
@@ -78,6 +82,11 @@ def grabdetails(url):
 				pass
 	if len(actors) > 0:
 		show["actor"] = actors
+
+	review = helper.cut(text, "<div class=\"element conclusion\">", "</div>")
+	review = helper.cleanup(review)
+	if review is not None and review:
+		show["review"] = (review, "text")
 
 	return show
 
