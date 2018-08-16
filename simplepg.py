@@ -145,9 +145,15 @@ def process_show(programme, show):
 	if {"videopresent", "colour", "aspect", "quality"}.intersection(show):
 		video = ET.SubElement(programme, "video")
 		if "videopresent" in show:
-			add_generic(video, "present", show["videopresent"], allow_lists=False)
+			if show["videopresent"]:
+				add_generic(video, "present", "yes", allow_lists=False)
+			else:
+				add_generic(video, "present", "no", allow_lists=False)
 		if "colour" in show:
-			add_generic(video, "colour", show["colour"], allow_lists=False)
+			if show["colour"]:
+				add_generic(video, "colour", "yes", allow_lists=False)
+			else:
+				add_generic(video, "colour", "no", allow_lists=False)
 		if "aspect" in show:
 			add_generic(video, "aspect", show["aspect"], allow_lists=False)
 		if "quality" in show:
@@ -156,7 +162,10 @@ def process_show(programme, show):
 	if {"audiopresent", "stereo"}.intersection(show):
 		audio = ET.SubElement(programme, "audio")
 		if "audiopresent" in show:
-			add_generic(audio, "present", show["audiopresent"], allow_lists=False)
+			if show["audiopresent"]:
+				add_generic(audio, "present", "yes", allow_lists=False)
+			else:
+				add_generic(audio, "present", "no", allow_lists=False)
 		if "stereo" in show:
 			add_generic(audio, "stereo", show["stereo"], allow_lists=False)
 
@@ -265,7 +274,7 @@ def create_epg(config):
 	for channel in config.findall("channel"):
 		try:
 			site = importlib.import_module('sites.' + channel.get("site"))
-		except:
+		except ModuleNotFoundError:
 			print("Error: could not find module sites." + channel.get("site"))
 			continue
 		channelid = channel.get("xmltv_id")

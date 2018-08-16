@@ -34,8 +34,8 @@ def grab(channel, timespan):
 				show["date"] = temp.group("year")
 				if temp.group("country"):
 					show["country"] = temp.group("country").split("/")
-
-		show["category"] = category
+		if category:
+			show["category"] = category
 		temp = re.search("<a href=\"(.*?)\" class=\"info-holder\">", section)
 		if temp is not None:
 			show["details-url"] = "http://m.tvtoday.de" + temp.group(1)
