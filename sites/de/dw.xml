@@ -1,0 +1,7 @@
+<channels>
+	<channel site="de.dw" site_id="1" xmltv_id="dwenglish.de">DW (English)</channel>
+	<channel site="de.dw" site_id="2" xmltv_id="dwarabic.de">(عربية) DW</channel>
+	<channel site="de.dw" site_id="3" xmltv_id="dwespanol.de">DW (Español)</channel>
+	<channel site="de.dw" site_id="4" xmltv_id="dwdeutschplus.de">DW (Deutsch+)</channel>
+	<channel site="de.dw" site_id="5" xmltv_id="dwdeutsch.de">DW (Deutsch)</channel>
+</channels>
