@@ -42,18 +42,19 @@ def add_subtitles(parent, element):
 	if type(element) is list:
 		for entry in element:
 			add_subtitles(parent, entry)
-	else:
+	elif type(element) is not bool or element:
 		subtitles = ET.SubElement(parent, "subtitles")
-		if "type" in element and element["type"] in ("teletext", "onscreen", "deaf-signed"):
-			subtitles.set("type", element["type"])
-		if "language" in element:
-			language = element["language"]
-		else:
-			language = None
-		if "lang" in element:
-			add_generic(subtitles, "language", (language, element["lang"]), "lang", False)
-		elif language is not None:
-			add_generic(subtitles, "language", language, allow_lists=False)
+		if type(element) is dict:
+			if "type" in element and element["type"] in ("teletext", "onscreen", "deaf-signed"):
+				subtitles.set("type", element["type"])
+			if "language" in element:
+				language = element["language"]
+			else:
+				language = None
+			if "lang" in element:
+				add_generic(subtitles, "language", (language, element["lang"]), "lang", False)
+			elif language is not None:
+				add_generic(subtitles, "language", language, allow_lists=False)
 
 def add_rating(parent, element, star=False):
 	if type(element) is list:
@@ -178,7 +179,7 @@ def process_show(programme, show):
 			if "channel" in prev:
 				attr["channel"] = prev["channel"]
 			add_generic(programme, "previously-shown", (None, attr))
-		else:
+		elif type(prev) is not bool or prev:
 			add_generic(programme, "previously-shown", None)
 	if "premiere" in show:
 		add_generic(programme, "premiere", show["premiere"], "lang", False)
@@ -270,7 +271,7 @@ def create_epg(config):
 		c = ET.SubElement(tv, "channel", id = channel.get("xmltv_id"))
 		ET.SubElement(c, "display-name").text = channel.text
 
-
+	successful = set()
 	for channel in config.findall("channel"):
 		try:
 			site = importlib.import_module('sites.' + channel.get("site"))
@@ -279,6 +280,10 @@ def create_epg(config):
 			continue
 		channelid = channel.get("xmltv_id")
 		print(channel.get("site") + ":" + channelid)
+
+		if channelid in successful:
+			print("channel already added, skipping...")
+			continue
 
 		try:
 			timespan = int(channel.get("timespan_index"))
@@ -320,6 +325,8 @@ def create_epg(config):
 
 
 		if len(shows) > 0:
+			successful.add(channelid)
+
 			# create progress bar if module is available
 			try:
 				from progress.bar import Bar

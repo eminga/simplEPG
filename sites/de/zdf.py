@@ -66,4 +66,7 @@ def grabdetails(url):
 	description = helper.cut(text, "<p class=\"overlay-text\">", "</p>")
 	if description is not None and description:
 		show["desc"] = helper.cleanup(description)
+
+	if text.find("Untertitel für Hörgeschädigte") != -1:
+		show["subtitles"] = True
 	return show
