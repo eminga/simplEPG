@@ -15,7 +15,7 @@ def grab(channel, timespan):
 		a = -1
 	for i in range(a, 14):
 		date = now + datetime.timedelta(days=i)
-		text = helper.download("http://program.ert.gr/Ert1/index.asp?id=" + channel + "&pdate=" + date.strftime("%d/%m/%Y"), encoding=charset)
+		text = helper.download("https://program.ert.gr/Ert1/index.asp?id=" + channel + "&pdate=" + date.strftime("%d/%m/%Y"), encoding=charset)
 		if text is None:
 			continue
 
@@ -47,7 +47,7 @@ def grab(channel, timespan):
 
 			link = temp.group(1)
 			if link[0] == "/":
-				link = "http://program.ert.gr" + link
+				link = "https://program.ert.gr" + link
 			if link:
 				show["details-url"] = link
 
