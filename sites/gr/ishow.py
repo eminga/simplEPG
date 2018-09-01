@@ -36,7 +36,7 @@ def grab(channel, timespan):
 
 			laststart = show["start"]
 
-			title = re.search("<div class=\"grandTitle\".*>(.+)</div>", section)			
+			title = re.search("<div class=\"grandTitle\".*>(.+)\s*?</div>", section)
 			show["title"] = helper.cleanup(title.group(1))
 
 			subtitle = helper.cut(section, "<div class=\"subTitle\">", "</div>")
