@@ -267,9 +267,7 @@ def create_epg(config):
 	tv.set("generator-info-name", "simplEPG v0.1")
 	tv.set("generator-info-url", "https://github.com/eminga/simplEPG")
 
-	for channel in config.findall("channel"):
-		c = ET.SubElement(tv, "channel", id = channel.get("xmltv_id"))
-		ET.SubElement(c, "display-name").text = channel.text
+	c_pos = 0
 
 	successful = set()
 	for channel in config.findall("channel"):
@@ -326,6 +324,10 @@ def create_epg(config):
 
 		if len(shows) > 0:
 			successful.add(channelid)
+			c = ET.Element("channel", id = channel.get("xmltv_id"))
+			ET.SubElement(c, "display-name").text = channel.text
+			tv.insert(c_pos, c)
+			c_pos += 1
 
 			# create progress bar if module is available
 			try:
