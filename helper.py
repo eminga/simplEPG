@@ -8,7 +8,11 @@ from time import sleep
 from socket import timeout
 from ssl import SSLError
 from six.moves import urllib
-from six.moves.html_parser import HTMLParser
+try:
+	from six.moves.html_parser import unescape
+except ImportError:
+	from six.moves import html_parser
+	unescape = html_parser.HTMLParser().unescape
 
 def split(text, begin, end):
 	result = []
@@ -36,8 +40,7 @@ def cut(text, begin, end):
 
 def cleanup(text):
 	if text is not None and text:
-		h = HTMLParser()
-		text = h.unescape(text)
+		text = unescape(text)
 		text = re.sub("<[\s\S]*?>", "", text)
 		text = re.sub("\t", " ", text)
 		text = re.sub("\s*$", "", text)
